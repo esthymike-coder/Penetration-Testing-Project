@@ -4,11 +4,17 @@ Patient Portal Penetration Test — Mediroza General Hospital
 W4-Capstone | Cybersecurity | Networkwalks
 
 Pentester Amogbon Abimbola Esther
+
 Program / Batch	B082 — Networkwalks
+
 Date	8 September 2026
+
 Modules completed	W2-PM1 (Multiple Kali Tools), W2-PM5 (Zenmap Scanning), Week 4 Capstone — Black-Box Web Application Penetration Test
+
 Client / Target	Mediroza General Hospital — https://medirozahospital.com (training environment)
+
 Permission secured from client?	Yes
+
 Phases covered	Phase 1: Reconnaissance & Footprinting · Phase 2: Attack Surface Mapping · Phase 3: Vulnerability Analysis · Phase 4: Exploitation · Phase 5: Post-Exploitation Analysis · Phase 6:
 
  Reporting
@@ -28,7 +34,6 @@ The engagement was limited strictly to the domain medirozahospital.com and its s
 Overall Risk Rating: CRITICAL — immediate remediation is strongly recommended before this application is exposed to real patient data.
 
 3. Tools Used
-Tool	Purpose
 whois	Domain registration lookup for the target hospital's web infrastructure
 whatweb	Fingerprint web technologies (server, CMS, plugins, IP)
 nslookup	Resolve the domain name to its IP address using DNS
@@ -42,8 +47,9 @@ ExifTool / pdfinfo	Document metadata analysis on retrieved patient report PDFs
 
 
 4. Activities Performed
+   
 4.1 Reconnaissance & Attack Surface Mapping
-I began with passive and active reconnaissance against medirozahospital.com using whois, whatweb, nslookup, curl, wafw00f and dig to profile the domain, resolve its IP, fingerprint the technology stack, and check for a Web Application Firewall (none was detected). I then reviewed robots.txt and sitemap.xml, which explicitly listed /patient/, /staff/, and /old/ as disallowed paths — an unintentional roadmap to the site's most sensitive directories, since Disallow directives are not an access control.
+From passive and active reconnaissance against medirozahospital.com using whois, whatweb, nslookup, curl, wafw00f and dig to profile the domain, resolve its IP, fingerprint the technology stack, and check for a Web Application Firewall (none was detected). I then reviewed robots.txt and sitemap.xml, which explicitly listed /patient/, /staff/, and /old/ as disallowed paths — an unintentional roadmap to the site's most sensitive directories, since Disallow directives are not an access control.
 
 
 
@@ -89,18 +95,27 @@ The risks below reflect observations from the reconnaissance, exploitation and p
 Risk / Finding	Evidence / Observation	Potential Impact	Level
 
 1	SQL injection — full authentication bypass	admin'-- - authenticated with no valid credentials on both /patient/login.php and /staff/login.php	Unauthenticated attacker gains full portal access, unlocking every downstream finding in this report	Critical
+
 2	Exposed legacy database backup	Unencrypted mediroza_db_backup_2019.sql retrieved from /old/ via a single unauthenticated GET request	Full exposure of staff PII (national ID, salary) and shareholder equity data — a severe data-protection breach	Critical
+
 3	IDOR on download.php	Sequential id=1/2/3 parameter returned three different patients' reports from one bypassed session	Combined with #1, allows enumeration of every patient record on the system, not just one	High
+
 4	Directory listing enabled	/patient/, /staff/, /old/ each returned a full auto-generated file index	Reveals internal application structure and is the root enabling cause of Finding #2	High
+
 5	Weak / default PDF passwords	All three patient report passwords recovered in seconds via dictionary attack (123456, password, !@#$%^&)	Provides no meaningful protection for confidential medical data at rest, independent of access-control fixes	Medium
+
 6	Sensitive paths disclosed via robots.txt	robots.txt listed /patient/, /staff/, /old/ in plain text	Gave a direct roadmap to the site's most sensitive directories, accelerating this assessment	Low
+
 7	Metadata disclosure in report PDFs	ExifTool extracted a developer's username and an internal comment from one report's metadata	Confirms internal knowledge of the backup exposure and leaks operational/staff information	Low
+
 8	User-Agent based bot filtering	Default tool UA blocked (403); spoofed browser UA succeeded (200)	Negligible security value — trivially bypassed and not a meaningful barrier to a real attacker	Informational
+
 6. Recommendations
 Immediate (Critical / High):
 
 Rewrite all database queries in login.php (patient and staff) and download.php to use parameterised queries / prepared statements — never concatenate user input into SQL strings.
 Remove the /old/ directory and its database backup from the public web root immediately; store backups outside the webroot or in access-controlled, encrypted storage.
+
 Disable directory listing (autoindexing) server-wide, not only on sensitive paths.
 Add server-side authorisation checks on download.php tied to session identity, and replace sequential integer IDs with non-guessable, per-report tokens (UUIDs).
 Rotate any credentials or secrets that may have shared a database with the exposed backup.
@@ -115,6 +130,7 @@ Strip or sanitise document metadata (author, comments) from all generated PDFs b
 Avoid listing sensitive paths in robots.txt — rely on authentication and server-side access control instead.
 Conduct a full source-code review of the custom CMS, since the same vulnerability class (unsanitised SQL input) appeared in two independent modules.
 Establish a periodic external penetration-testing programme and a secure software development lifecycle (SSDLC) to catch these issues before deployment.
+
 7. Conclusion
 This capstone engagement built directly on the footprinting and scanning skills developed in Weeks 1–2 of the program, extending them into full vulnerability discovery and controlled exploitation. I successfully chained a SQL injection authentication bypass into an IDOR to retrieve every patient report on the system, cracked the weak passwords protecting those reports, and independently confirmed a critical, unauthenticated data exposure — a legacy database backup containing staff and shareholder records — with PDF metadata corroborating the root cause.
 
