@@ -142,4 +142,23 @@ Finally, this project reinforced that reconnaissance, exploitation and reporting
 8. Evidences Collected
 Screenshots below are presented in the order the corresponding activity occurred during testing
 
+![Screenshot 1](Screenshot%201.jpeg)
+
+![Screenshot 2](Screenshot%202.jpeg)
+
+![Screenshot 3](Screenshot%203.jpeg)
+
+![Screenshot 4](Screenshot%204.jpeg)
+
+![Screenshot 5](Screenshot%205.jpeg)
+
+![Screenshot 6](Screenshot%206.jpeg)
+
+![Screenshot 8](Screenshot%208.jpeg)
+
+![Screenshot 10](Screenshot%2010.jpeg)
+
+![Pentesting Report](Pentesting%20report.jpeg)
+
+
 
