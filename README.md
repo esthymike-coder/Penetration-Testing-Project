@@ -6,6 +6,8 @@
 ![Skill](https://img.shields.io/badge/Skill-Linux-gray?style=for-the-badge&logoColor=white&labelColor=red)
 ![Ethical Hacking](https://img.shields.io/badge/Ethical%20Hacking-orange?style=for-the-badge&logo=kalilinux&logoColor=white)
 ![Penetration Testing](https://img.shields.io/badge/Penetration%20Testing-red?style=for-the-badge&logo=kalilinux&logoColor=white)
+![Author](https://img.shields.io/badge/AUTHOR-Amogbon%20Abimbola%20Esther-6A1B9A?style=for-the-badge)
+
 
 
 Patient Portal Penetration Test — Mediroza General Hospital
