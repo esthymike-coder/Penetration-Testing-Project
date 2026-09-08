@@ -140,17 +140,6 @@ The exercise reinforced that information gathering and small misconfigurations c
 Finally, this project reinforced that reconnaissance, exploitation and reporting must always be performed within an authorised scope; every activity described here was carried out against a purpose-built training environment under written permission as part of the assigned Networkwalks capstone project.
 
 8. Evidences Collected
-Screenshots below are presented in the order the corresponding activity occurred during testing; see Section 4 for full narrative context.
+Screenshots below are presented in the order the corresponding activity occurred during testing
 
 
-
-Screenshot	Shows
-07-patient-portal-idor-download-links.png	Patient portal — sequential download.php?id= links (IDOR evidence)
-04-report1-password-prompt-download.png	patient_report_1.pdf — downloaded via IDOR, awaiting password
-09-pdf-password-cracked-dlamini.png	Password cracker recovering patient_report_1.pdf's password (123456)
-02-report2-password-prompt.png	patient_report_2.pdf — password prompt prior to cracking
-01-pdf-password-cracked-reddy.png	Password cracker recovering patient_report_2.pdf's password (password)
-03-report3-password-prompt.png	patient_report_3.pdf — password prompt prior to cracking
-08-pdf-password-cracked-thompson.png	Password cracker recovering patient_report_3.pdf's password (!@#$%^&)
-05-report2-opened-reddy-results.png	Decrypted patient_report_2.pdf contents
-06-report1-opened-dlamini-results.png	Decrypted patient_report_1.pdf content
