@@ -1,13 +1,14 @@
-# Penetration-Testing-Project
-Penetration Testing Report
+<!-- HEADER BADGES -->
+![Cybersecurity](https://img.shields.io/badge/CYBERSECURITY-NETWORKWALKS-0066CC?style=for-the-badge)
+![Week & Batch](https://img.shields.io/badge/WEEK%204-B082-702963?style=for-the-badge)
+![Authorized](https://img.shields.io/badge/AUTHORIZED-YES-00C853?style=for-the-badge)
+![Skill](https://img.shields.io/badge/Skill-Cybersecurity-gray?style=for-the-badge&logoColor=white&labelColor=red)
+![Skill](https://img.shields.io/badge/Skill-Linux-gray?style=for-the-badge&logoColor=white&labelColor=red)
+![Ethical Hacking](https://img.shields.io/badge/Ethical%20Hacking-orange?style=for-the-badge&logo=kalilinux&logoColor=white)
+![Penetration Testing](https://img.shields.io/badge/Penetration%20Testing-red?style=for-the-badge&logo=kalilinux&logoColor=white)
+
+
 Patient Portal Penetration Test — Mediroza General Hospital
-W4-Capstone | Cybersecurity | Networkwalks
-
-Pentester Amogbon Abimbola Esther
-
-Program / Batch	B082 — Networkwalks
-
-Date	8 September 2026
 
 Modules completed	W2-PM1 (Multiple Kali Tools), W2-PM5 (Zenmap Scanning), Week 4 Capstone — Black-Box Web Application Penetration Test
 
